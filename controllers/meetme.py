@@ -11,13 +11,34 @@ def get_suggestions(request, params):
 
     data = {
         'method'    : 'tagged.apps.meetme.browse',
-        'limit'     : '15',
-        'counter'   : '0',
-        'track'     : '123',
+        'limit'         : 10,
+        'gender'        : 'm',
+        'min_age'       : 18,
+        'max_age'       : 25,
+        'country'       : 'us',
+        'distance'      : '50',
+        # 'location'      : false,
+        # 'location_nd'   : false,
+        # 'newlocation'   : false,
+        # 'newlocation_id': false,
+        'counter'       : 3,
+        'reset'         : 'true',
+        # 'init_uid'      : false,
+        # 'debug'         : false,
+        # 'return_as'     : false,
+        'clear_alert'   : 'true',
+        # 'it_model'      : array('required' : false, 'filter' : 'string'),
+        # 'ethnicity'     : array('required' : false, 'filter' : 'filterEthnicity', 'class' : 'search'),
+        'counts'        : 'true'
     }
-    response = requests.post('https://tagged.com/api/index.html', data)
+    cookies = {
+        'S' : 'too9n3nrafqiq4io9umaor0314'
+    }
+    response = requests.post('http://www.tag-local.com/api/?application_id=user&format=JSON&session_token=too9n3nrafqiq4io9umaor0314', data, cookies = cookies)
+
+    print(response.text)
 
     if not response:
         return False
 
-    return response.get('results')
+    return response.json()
