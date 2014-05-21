@@ -1,6 +1,8 @@
 # coding=utf-8
 import requests
 
+from flask import request
+
 def get_suggestions(request, params):
     """
         This will actually make the connection to tagged system
@@ -8,6 +10,12 @@ def get_suggestions(request, params):
     """
     #TODO - for now just return
     uid = params.get('uid')
+
+
+    #session_token = request.cookies.get('S')
+    #assert session_token == request.args.get('session_token')
+
+    session_token = request.args.get('session_token')
 
     data = {
         'method'    : 'tagged.apps.meetme.browse',
@@ -31,10 +39,17 @@ def get_suggestions(request, params):
         # 'ethnicity'     : array('required' : false, 'filter' : 'filterEthnicity', 'class' : 'search'),
         'counts'        : 'true'
     }
-    cookies = {
-        'S' : 'too9n3nrafqiq4io9umaor0314'
+
+    args = {
+        'application_id' : 'user',
+        'session_token'  : session_token,
+        'format'         : 'JSON',
     }
-    response = requests.post('http://www.tag-local.com/api/?application_id=user&format=JSON&session_token=too9n3nrafqiq4io9umaor0314', data, cookies = cookies
+
+    cookies = {
+        'S' : session_token
+    }
+    response = requests.post('http://www.tag-local.com/api/', data, cookies = cookies, params=args)
     print(response.text)
 
     if not response:
