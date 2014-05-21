@@ -34,8 +34,7 @@ def get_suggestions(request, params):
     cookies = {
         'S' : 'too9n3nrafqiq4io9umaor0314'
     }
-    response = requests.post('http://www.tag-local.com/api/?application_id=user&format=JSON&session_token=too9n3nrafqiq4io9umaor0314', data, cookies = cookies)
-
+    response = requests.post('http://www.tag-local.com/api/?application_id=user&format=JSON&session_token=too9n3nrafqiq4io9umaor0314', data, cookies = cookies
     print(response.text)
 
     if not response:
