@@ -51,6 +51,7 @@ def vote(uid, tuid):
         'uid'   : uid,
         'tuid'  : tuid
     }
+
     #call handler
     result = meetme.vote(request, params)
 

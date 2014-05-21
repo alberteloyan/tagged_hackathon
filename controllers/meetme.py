@@ -9,8 +9,7 @@ def get_suggestions(request, params):
         :param uid — tagged id of the user for whom we are getting suggestions
     """
     #TODO - for now just return
-    uid = params.get('uid')
-
+    #uid = params.get('uid')
 
     #session_token = request.cookies.get('S')
     #assert session_token == request.args.get('session_token')
@@ -53,6 +52,43 @@ def get_suggestions(request, params):
     print(response.text)
 
     if not response:
+        return False
+
+    return response.json()
+
+
+def vote(request, params) :
+    uid             = params.get('uid')
+    target_uid      = params.get('tuid')
+
+    session_token   = request.args.get('session_token')
+    interest        = request.json.get('interest')
+
+    data = {
+        'user_id'       : target_uid,
+        'interest'      : interest,
+        'counter'       : 2,
+        'streak'        : 2,
+        #'previousView'  : array('filter' : 'filterPreviousViews', 'required' : false),
+        #'msgSent'       : array('filter' : 'bool', 'required' : false),
+        #'clickSource'   : array('required' : false, 'filter' : 'string'),
+    }
+
+    args = {
+        'method'    : 'tagged.apps.meetme.interested',
+        'application_id' : 'user',
+        'session_token'  : session_token,
+        'format'         : 'JSON',
+    }
+
+    cookies = {
+        'S' : session_token
+    }
+
+    response = requests.post('http://www.tag-local.com/api/', data, cookies = cookies, params=args)
+    print(response.text)
+
+    if not response :
         return False
 
     return response.json()
