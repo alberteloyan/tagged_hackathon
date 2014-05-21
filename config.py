@@ -1,5 +1,5 @@
 import os
 
 class DefaultConfig(object):
-    DEBUG = TRUE
+    DEBUG = True
     TESTING = True
