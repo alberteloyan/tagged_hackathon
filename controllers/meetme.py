@@ -1,11 +1,13 @@
+# coding=utf-8
 import requests
 
-def get_suggestions(uid):
+def get_suggestions(request, params):
     """
         This will actually make the connection to tagged system
         :param uid — tagged id of the user for whom we are getting suggestions
     """
     #TODO - for now just return
+    uid = params.get('uid')
 
     data = {
         'method'    : 'tagged.apps.meetme.browse',

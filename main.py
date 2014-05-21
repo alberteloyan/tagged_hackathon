@@ -46,7 +46,7 @@ def get_suggestions(uid):
 
 #get meetme suggestions for a given uid
 @app.route('/tagged/api/1/meetme/<int:uid>/interested/<int:tuid>', methods = ['POST'])
-def vote(uid):
+def vote(uid, tuid):
     params = {
         'uid'   : uid,
         'tuid'  : tuid
