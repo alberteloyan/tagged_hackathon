@@ -9,8 +9,9 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lib'))
 
 #load third-party dependencies
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import logging
+import json
 
 #load project dependencies
 import config
@@ -38,11 +39,8 @@ def get_suggestions(uid):
     result = meetme.get_suggestions(request, params)
 
     #TODO - generate response
-    return jsonify(
-        {
-            'data': result
-        }
-    )
+    response = json.dumps(result)
+    return Response(response, mimetype='text/html')
 
 #get meetme suggestions for a given uid
 @app.route('/tagged/api/1/meetme/<int:uid>/interested/<int:tuid>', methods = ['POST'])
@@ -56,11 +54,8 @@ def vote(uid, tuid):
     result = meetme.vote(request, params)
 
     #TODO - generate response
-    return jsonify(
-        {
-            'data': result
-        }
-    )
+    response = json.dumps(result)
+    return Response(response, mimetype='text/html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug = True)
