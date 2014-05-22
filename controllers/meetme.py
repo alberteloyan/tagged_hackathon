@@ -15,10 +15,12 @@ def get_suggestions(request, params):
     #assert session_token == request.args.get('session_token')
 
     session_token = request.args.get('session_token')
+    counter = request.args.get('counter')
+    limit = request.args.get('limit')
 
     data = {
         'method'    : 'tagged.apps.meetme.browse',
-        'limit'         : 10,
+        'limit'         : limit,
         'gender'        : 'm',
         'min_age'       : 18,
         'max_age'       : 25,
@@ -28,7 +30,7 @@ def get_suggestions(request, params):
         # 'location_nd'   : false,
         # 'newlocation'   : false,
         # 'newlocation_id': false,
-        'counter'       : 3,
+        'counter'       : counter,
         'reset'         : 'true',
         # 'init_uid'      : false,
         # 'debug'         : false,
