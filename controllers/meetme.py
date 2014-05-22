@@ -64,7 +64,7 @@ def vote(request, params) :
     target_uid      = params.get('tuid')
 
     session_token   = request.args.get('session_token')
-    interest        = request.json.get('interest')
+    interest        = request.form.get('interest')
 
     data = {
         'user_id'       : target_uid,
