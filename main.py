@@ -39,7 +39,7 @@ def get_suggestions(uid):
     result = meetme.get_suggestions(request, params)
 
     #TODO - generate response
-    response = json.dumps(result)
+    response = json.dumps([result])
     return Response(response, mimetype='text/html')
 
 #get meetme suggestions for a given uid
@@ -54,7 +54,7 @@ def vote(uid, tuid):
     result = meetme.vote(request, params)
 
     #TODO - generate response
-    response = json.dumps(result)
+    response = json.dumps([result])
     return Response(response, mimetype='text/html')
 
 if __name__ == '__main__':
