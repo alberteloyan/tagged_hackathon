@@ -50,7 +50,7 @@ def get_suggestions(request, params):
     cookies = {
         'S' : session_token
     }
-    response = requests.post('http://www.tag-local.com/api/', data, cookies = cookies, params=args)
+    response = requests.post('http://www.tag-dev.com/api/', data, cookies = cookies, params=args)
     print(response.text)
 
     if not response:
@@ -87,7 +87,7 @@ def vote(request, params) :
         'S' : session_token
     }
 
-    response = requests.post('http://www.tag-local.com/api/', data, cookies = cookies, params=args)
+    response = requests.post('http://www.tag-dev.com/api/', data, cookies = cookies, params=args)
     print(response.text)
 
     if not response :
