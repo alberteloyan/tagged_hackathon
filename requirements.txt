@@ -4,5 +4,5 @@
 # in `lib/` subdirectory.
 #
 
-Flask==0.10
-Werkzeug==0.9.4
+flask==0.10
+requests
