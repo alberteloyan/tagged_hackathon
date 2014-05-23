@@ -3,11 +3,6 @@
     Flask front controller for Tagged
 """
 
-#load system dependencies
-import sys
-import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lib'))
-
 #load third-party dependencies
 from flask import Flask, request, jsonify, Response
 import logging
