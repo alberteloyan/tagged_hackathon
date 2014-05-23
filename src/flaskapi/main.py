@@ -52,5 +52,8 @@ def vote(uid, tuid):
     response = json.dumps([result])
     return Response(response, mimetype='text/html')
 
-if __name__ == '__main__':
+def main():
     app.run(host='0.0.0.0', port=80, debug = True)
+
+if __name__ == '__main__':
+    main()

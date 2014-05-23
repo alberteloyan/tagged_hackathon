@@ -21,7 +21,7 @@ setup(
     install_requires=REQUIREMENTS,
     entry_points = {
         'console_scripts': [
-            'brocade-tool = brocadetool.brocadetool:main',
+            'flaskapi = flaskapi.main:main',
             ]
     },
 )
